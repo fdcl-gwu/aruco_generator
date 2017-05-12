@@ -11,33 +11,21 @@ print(aruco_dict)
 # last param is total image size
 
 # Create an image from the marker
-img1 = aruco.drawMarker(aruco_dict, 1, 700)
-img2 = aruco.drawMarker(aruco_dict, 2, 700)
-# cv2.imwrite("test_marker.jpg", img)
+for ii in range(4):
+    img = aruco.drawMarker(aruco_dict, ii+1, 700)
 
-# create the image in matplotlib
-fig = plt.figure(frameon=False)
-fig.set_size_inches(6,6)
+    # create the image in matplotlib
+    fig = plt.figure(frameon=False)
+    fig.set_size_inches(6,6)
 
-# make content fill whole figure
-ax = plt.Axes(fig, [0, 0, 1, 1]) 
-ax.set_axis_off()
-fig.add_axes(ax)
+    # make content fill whole figure
+    ax = plt.Axes(fig, [0, 0, 1, 1]) 
+    ax.set_axis_off()
+    fig.add_axes(ax)
 
-ax.imshow(img1, cmap='Greys_r')
-plt.savefig('aruco1.pdf')
+    ax.imshow(img, cmap='Greys_r')
+    plt.savefig('aruco' + str(ii+1) + '.pdf')
 
-# another figure
-fig = plt.figure(frameon=False)
-fig.set_size_inches(6,6)
-
-# make content fill whole figure
-ax = plt.Axes(fig, [0, 0, 1, 1]) 
-ax.set_axis_off()
-fig.add_axes(ax)
-
-ax.imshow(img2, cmap='Greys_r')
-plt.savefig('aruco2.pdf')
 plt.show()
 # Display the image to us
 #cv2.imshow('frame', img)
